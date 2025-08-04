@@ -1,15 +1,16 @@
-# 💪 Scheda Palestra UI
+# 💪 Scheda Allenamento - Palestra
 
-Una moderna webapp per la gestione di schede di allenamento, sviluppata con Next.js 14, React 18, TypeScript, Tailwind CSS e shadcn/ui.
+Una moderna webapp per la gestione di schede di allenamento personalizzate, sviluppata con Next.js 14, React 18, TypeScript, Tailwind CSS e shadcn/ui.
 
 ## 🚀 Caratteristiche
 
 - **Design Moderno**: Interfaccia accattivante in dark mode con possibilità di toggle
 - **Timer Integrato**: Timer per il recupero tra le serie per ogni esercizio
-- **Progresso in Tempo Reale**: Tracciamento del progresso per serie ed esercizi
-- **Responsive**: Ottimizzata per desktop, tablet e mobile
+- **Cardio Timer**: Timer dedicato per la sessione di cardio
+- **Layout Responsive**: Ottimizzata per desktop, tablet e mobile
 - **TypeScript**: Tipizzazione completa per una migliore esperienza di sviluppo
 - **Componenti Modulari**: Architettura component-based con shadcn/ui
+- **PWA Ready**: Installabile come Progressive Web App
 
 ## 🛠️ Stack Tecnologico
 
@@ -24,14 +25,16 @@ Una moderna webapp per la gestione di schede di allenamento, sviluppata con Next
 
 ### Scheda di Allenamento
 
-- 4 giorni di allenamento (Petto/Tricipiti, Schiena/Bicipiti, Gambe, Spalle/Addominali)
-- 18 esercizi totali con dettagli completi
-- Timer personalizzabile per il recupero
-- Tracciamento del progresso per ogni serie
+- **3 giorni di allenamento** (Petto/Spalle/Tricipiti, Schiena/Bicipiti, Gambe/Spalle)
+- **1 circuito addominali** con esercizi consecutivi
+- **Esercizi basati su scheda reale** con dettagli completi
+- **Timer personalizzabile** per il recupero
+- **Cardio integrato** con timer di 15 minuti
 
 ### Timer Intelligente
 
 - Timer automatico per il recupero tra le serie
+- Timer dedicato per la sessione di cardio
 - Controlli play/pause/reset
 - Barra di progresso visiva
 - Notifiche di completamento
@@ -40,42 +43,61 @@ Una moderna webapp per la gestione di schede di allenamento, sviluppata con Next
 
 - Design in dark mode di default
 - Toggle per light/dark mode
-- Layout responsive
+- Layout responsive con max-width per desktop
 - Animazioni fluide
 - Icone intuitive
 
 ## 🏃‍♂️ Esercizi Inclusi
 
-### Giorno 1 - Petto e Tricipiti
+### Giorno 1 - Petto, Spalle e Tricipiti
 
-- Panca Piana (4x8-10)
-- Panca Inclinata (3x10-12)
-- Dips (3x8-12)
-- French Press (3x12-15)
+- Distensioni manubri orizzontale (4x8)
+- Croci orizzontali (3x12)
+- Croci cavi chiusura centrale (3x10+10)
+- Distensioni panca alta (4x8/10)
+- Alzate laterali (3x12)
+- Tric french press seduto 1 manubrio (3x10)
+- DIP (4xMax)
+- Tric pushdown corda (4x10+10)
+- Calf (5x30)
 
 ### Giorno 2 - Schiena e Bicipiti
 
-- Stacchi da Terra (4x6-8)
-- Trazioni alla Sbarra (4x8-10)
-- Rematore con Bilanciere (3x10-12)
-- Curl con Bilanciere (3x12-15)
-- Curl Martello (3x12-15)
+- Trazioni presa larga (3xMax)
+- Lat machine (4x8)
+- Pulley basso presa larga (4x6+6)
+- Scrollate manubri (4x15)
+- Row insieme (3x10)
+- Trazione presa inversa (3xMAX)
+- Bic martello (3x8)
+- Bic bilanciere angolato (4x10)
+- Bic cavo basso asta dritta (3x15)
 
-### Giorno 3 - Gambe
+### Giorno 3 - Gambe e Spalle
 
-- Squat (4x8-10)
-- Pressa (3x12-15)
-- Affondi (3x10-12 per gamba)
-- Leg Extension (3x15-20)
-- Calf Raises (4x20-25)
+- Leg ext (3x10+10)
+- Leg press (4x10,10,8,8)
+- Bulgarian Squat (3x10)
+- Leg curl (4x12)
+- Hack squat (3x8)
+- Alzate laterali cavo 1braccio (4x10)
+- Distensioni manubri seduto (4x10)
+- Aperture dietro posteriori manubri (3x12)
+- Alzate frontali manubri (4x10+10)
 
-### Giorno 4 - Spalle e Addominali
+### Circuito Addominali
 
-- Military Press (4x8-10)
-- Alzate Laterali (3x12-15)
-- Alzate Posteriori (3x12-15)
-- Crunch (3x20-25)
-- Plank (3x45-60 secondi)
+- **5 circuiti** con:
+  - CRUNCH (30SEC)
+  - PLANK (30SEC)
+  - VACUUM (30SEC)
+  - RIPOSO (40SEC)
+
+### Cardio
+
+- **15 minuti** a fine allenamento
+- **Pendenza 7** - **Velocità 5**
+- **Timer integrato** con controlli completi
 
 ## 🚀 Installazione
 
@@ -113,15 +135,93 @@ src/
 │   └── page.tsx
 ├── components/
 │   ├── ui/           # Componenti shadcn/ui
+│   ├── CircuitExerciseCard.tsx
+│   ├── CircuitTab.tsx
 │   ├── ExerciseCard.tsx
 │   ├── ThemeToggle.tsx
-│   └── WorkoutDay.tsx
+│   └── WorkoutTab.tsx
 ├── data/
 │   └── workout-data.ts
 ├── types/
 │   └── workout.ts
 └── lib/
     └── utils.ts
+
+public/
+├── favicon.svg
+├── robots.txt
+└── site.webmanifest
+```
+
+## 🎨 Componenti Principali
+
+### `ExerciseCard`
+
+- Card per esercizi normali con timer di recupero
+- Descrizione sempre visibile
+- Timer integrato con controlli
+
+### `CircuitExerciseCard`
+
+- Card speciale per esercizi del circuito
+- Design distintivo con bordo giallo
+- Timer solo per il recupero tra circuiti
+
+### `WorkoutTab`
+
+- Visualizzazione di un giorno di allenamento
+- Header con muscoli target separati
+- Layout pulito senza statistiche
+
+### `CircuitTab`
+
+- Visualizzazione del circuito addominali
+- Esercizi consecutivi senza recupero
+- Timer per il riposo tra circuiti
+
+### `ThemeToggle`
+
+- Toggle per dark/light mode
+- Salvataggio preferenze in localStorage
+- Posizionamento fisso in alto a destra
+
+## 🎯 Tipi TypeScript
+
+```typescript
+interface Exercise {
+  id: string;
+  name: string;
+  sets: number;
+  muscleGroups: string[];
+  imageUrl?: string;
+  videoUrl?: string;
+  notes?: string;
+}
+
+interface WorkoutExercise extends Exercise {
+  reps: string;
+  restTime: number;
+}
+
+interface CircuitExercise extends Exercise {
+  time: number;
+}
+
+interface WorkoutDay {
+  type: "workout";
+  id: string;
+  name: string;
+  muscleGroups: string[];
+  exercises: WorkoutExercise[];
+}
+
+interface Circuit {
+  type: "circuit";
+  id: string;
+  name: string;
+  muscleGroups: string[];
+  exercises: CircuitExercise[];
+}
 ```
 
 ## 🎨 Personalizzazione
@@ -145,7 +245,7 @@ Il design è completamente personalizzabile tramite Tailwind CSS e le variabili 
 
 L'applicazione è ottimizzata per:
 
-- **Desktop**: Layout completo con sidebar e dettagli
+- **Desktop**: Layout con max-width per migliore leggibilità
 - **Tablet**: Layout adattivo con componenti ridimensionati
 - **Mobile**: Layout verticale ottimizzato per touch
 
@@ -155,6 +255,16 @@ L'applicazione è ottimizzata per:
 - `npm run build`: Build per la produzione
 - `npm run start`: Avvia il server di produzione
 - `npm run lint`: Esegue il linting del codice
+
+## 📄 Metadata e SEO
+
+- **Title**: "Scheda Allenamento - Palestra"
+- **Description**: Completa per SEO
+- **Open Graph**: Per condivisione social
+- **Twitter Cards**: Per Twitter
+- **PWA Manifest**: Per installazione
+- **Favicon**: Icona peso/dumbbell
+- **Robots.txt**: Per indicizzazione
 
 ## 🤝 Contribuire
 
