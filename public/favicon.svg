@@ -1,0 +1,12 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="32" height="32" rx="6" fill="#0f172a"/>
+  <!-- Dumbbell/Weight icon -->
+  <g fill="#f8fafc">
+    <!-- Left weight -->
+    <rect x="4" y="12" width="4" height="8" rx="2"/>
+    <!-- Right weight -->
+    <rect x="24" y="12" width="4" height="8" rx="2"/>
+    <!-- Bar -->
+    <rect x="8" y="14" width="16" height="4" rx="2"/>
+  </g>
+</svg> 
