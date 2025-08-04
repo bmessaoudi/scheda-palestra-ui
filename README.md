@@ -2,6 +2,12 @@
 
 Una moderna webapp per la gestione di schede di allenamento personalizzate, sviluppata con Next.js 14, React 18, TypeScript, Tailwind CSS e shadcn/ui.
 
+## 🌐 Demo Live
+
+**🔗 [scheda-palestra-ui.vercel.app](https://scheda-palestra-ui.vercel.app)**
+
+Prova l'applicazione direttamente online!
+
 ## 🚀 Caratteristiche
 
 - **Design Moderno**: Interfaccia accattivante in dark mode con possibilità di toggle
